@@ -2,6 +2,8 @@ import React, {useState, useEffect} from "react";
 
 import WSPGallery from '../components/WSPGallery';
 import Link from "next/link";
+import url from "@/components/url";
+
 
 
 export default function Home() {
@@ -18,7 +20,7 @@ const getImage = (e)=>{
 
 useEffect(() => {
 const fetchData = async()=>{
-  let data = await fetch(`/api/getImage`)
+  let data = await fetch(`${url}getImage`)
   data = await data.json()
   // console.log(data);
   setData(data)

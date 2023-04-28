@@ -3,6 +3,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from 'next/router';
 import Link from "next/link";
+import url from "@/components/url";
 
 
 function AddImage() {
@@ -46,7 +47,7 @@ function AddImage() {
       return
     }
 
-    let data = await fetch(`/api/addImage`,{
+    let data = await fetch(`${url}addImage`,{
       method: "POST",
       headers: {
         "Content-Type": "application/json",

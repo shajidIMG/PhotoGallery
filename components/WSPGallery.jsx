@@ -7,6 +7,7 @@ import {
   faCircleXmark
 } from '@fortawesome/free-solid-svg-icons'
 import { useEffect } from 'react'
+import url from './url'
 
 // import './wsp-gallery.css'
 
@@ -21,9 +22,9 @@ const [d,setD] = useState([])
 
 useEffect(() => {
     const fetchData = async()=>{
-      let data = await fetch(`/api/pagination?page=${1}&perPage=${perpage}`)
+      let data = await fetch(`${url}getImage?page=${1}&perPage=${perpage}`)
       data = await data.json()
-      // console.log(data);
+      console.log(data);
       setD(data.data)
     
     } 
@@ -61,7 +62,7 @@ useEffect(() => {
   }
 
 const handleSearch = async(e)=>{
-    let data = await fetch(`/api/search?query=${e.target.value}`)
+    let data = await fetch(`${url}search?query=${e.target.value}`)
     data = await data.json()
 
     setD(data.data)
@@ -73,7 +74,7 @@ const handleSearch = async(e)=>{
 const handlePage = async(op,search=false)=>{
 
     if(search){
-        let d = await fetch(`/api/pagination?page=${1}&perPage=${perpage}`)
+        let d = await fetch(`${url}getImage?page=${1}&perPage=${perpage}`)
         d = await d.json()
         setD(d.data)
         console.log(d);
@@ -95,7 +96,7 @@ console.log("inside");
 if(op == "next"){
 
     setPage(page+1)
-    let d = await fetch(`/api/pagination?page=${page+1}&perPage=${perpage}`)
+    let d = await fetch(`${url}getImage?page=${page+1}&perPage=${perpage}`)
     d = await d.json()
     setD(d.data)
     // console.log(d);
@@ -113,7 +114,7 @@ if(op == "next"){
 }
 else if(op == "prev"){
     setPage(page-1)
-    let d = await fetch(`/api/pagination?page=${page-1}&perPage=${perpage}`)
+    let d = await fetch(`${url}getImage?page=${page-1}&perPage=${perpage}`)
     d = await d.json()
     setD(d.data)
    console.log(d);
